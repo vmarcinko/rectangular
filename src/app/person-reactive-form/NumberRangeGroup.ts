@@ -1,15 +1,27 @@
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {NumberRange} from "../NumberRange";
+
+export const orderValid: ValidatorFn = (form: FormGroup) => {
+  const start = form.get('start');
+  const end = form.get('end');
+  if (start.valid && end.valid) {
+    if (start > end) {
+      return {invalidOrder: true};
+    }
+  }
+  return null;
+};
 
 export class NumberRangeGroup extends FormGroup {
 
   constructor() {
-    // should put some Validators here!!!
+    // try out the validators
     super(
       {
-        start: new FormControl(''),
-        end: new FormControl('')
-      }
+        start: new FormControl('', [Validators.required]),
+        end: new FormControl('', [Validators.required])
+      },
+      orderValid
     );
   }
 
