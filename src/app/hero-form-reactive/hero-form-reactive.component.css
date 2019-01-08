@@ -1,0 +1,7 @@
+.ng-invalid:not(form)  {
+  border: solid red; /* red */
+}
+
+.cross-validation-error-message {
+  border: 4px solid red; /* red */
+}

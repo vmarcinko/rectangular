@@ -1,0 +1,45 @@
+<p>
+  Fill the following form:
+</p>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <p>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <p>
+
+  Number range:
+  <app-number-range-editor formGroupName="numberRangeFormGroup"></app-number-range-editor>
+
+  <p>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+</form>
+
+<hr/>
+
+<button (click)="updateNumberRange()">Update Number Range</button>
+
+<hr/>
+
+<p>
+  Form Value: {{ profileForm.value | json }}
+</p>
+<p>
+  Form Status: {{ profileForm.status }}
+</p>
+<p>
+  Form group errors: {{ profileForm.errors | json }}
+</p>
+
