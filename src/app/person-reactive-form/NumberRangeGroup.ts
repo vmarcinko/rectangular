@@ -1,11 +1,11 @@
-import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {NumberRange} from "../NumberRange";
 
-export const orderValid: ValidatorFn = (form: FormGroup) => {
+export const orderValid: ValidatorFn = (form: FormGroup): ValidationErrors | null => {
   const start = form.get('start');
   const end = form.get('end');
   if (start.valid && end.valid) {
-    if (start > end) {
+    if (start.value > end.value) {
       return {invalidOrder: true};
     }
   }

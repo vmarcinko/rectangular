@@ -8,3 +8,14 @@
     <input type="text" formControlName="end">
   </label>
 </ng-container>
+
+<p>
+  Subform Value: {{ controlContainer.control.value | json }}
+</p>
+<p>
+  Subform Status: {{ controlContainer.control.status }}
+</p>
+<p>
+  Subform errors: {{ controlContainer.control.errors | json }}
+</p>
+
